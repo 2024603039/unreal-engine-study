@@ -1,12 +1,14 @@
 # 02. Unreal Engine 5.8 MCP Setup
 
-작성일 : 2026-07-11
+**작성일 : 2026-07-11**
 
 ---
 
 # 1. 실습 목적
 
-이번 실습에서는 Unreal Engine 5.8과 OpenAI Codex를 Model Context Protocol(MCP)을 이용하여 연결하고, AI가 Unreal Engine을 직접 제어할 수 있는 개발 환경을 구축하는 것을 목표로 하였다.
+이번 실습에서는 Unreal Engine 5.8과 OpenAI Codex를 MCP(Model Context Protocol)를 이용하여 연결하는 방법을 공부하였다.
+
+또한 AI가 언리얼 엔진과 연결되어 프로젝트를 확인하거나 작업을 수행할 수 있는 환경을 직접 구축하는 것을 목표로 하였다.
 
 ---
 
@@ -18,7 +20,6 @@
 | AI | OpenAI Codex (GPT-5.5) |
 | 운영체제 | Windows |
 | MCP | Unreal Engine Model Context Protocol |
-| 연결 방식 | localhost (127.0.0.1:8000) |
 
 ---
 
@@ -26,166 +27,86 @@
 
 Epic Games Launcher를 이용하여 Unreal Engine 5.8을 설치하였다.
 
-설치 과정에서는 SSD를 설치 경로로 지정하였다.
+처음에는 HDD에 설치하였지만 설치 시간이 오래 걸려 SSD에 다시 설치하였다.
 
-설치 완료 후 새로운 프로젝트를 생성하여 MCP 실습 환경을 준비하였다.
-
----
-
-# 4. MCP Plugin 활성화
-
-Unreal Engine에서 MCP Plugin이 활성화되어 있는지 확인하였다.
-
-Plugin 활성화 이후 Unreal Editor를 재실행하였다.
-
-Plugin이 정상적으로 로드된 것을 확인하였다.
+설치가 완료된 후 새로운 프로젝트를 생성하여 실습을 준비하였다.
 
 ---
 
-# 5. MCP Server 실행
+# 4. MCP Server 실행
 
-Unreal Engine Console(Command)에서 다음 명령어를 입력하였다.
+Unreal Engine에서 MCP Server를 실행하였다.
 
-```text
-ModelContextProtocol.StartServer 8000
-```
+실행 후 Output Log를 확인하여 서버가 정상적으로 실행되었는지 확인하였다.
 
-실행 후 Output Log에서 다음과 같은 메시지를 확인하였다.
-
-```
-Starting MCP server on port 8000
-
-Created new HttpListener on 127.0.0.1:8000
-```
-
-이를 통해 MCP Server가 정상적으로 실행되었음을 확인하였다.
+MCP Server가 실행되면 AI와 Unreal Engine이 서로 연결될 수 있는 상태가 된다.
 
 ---
 
-# 6. Codex 실행
+# 5. Codex 연결
 
 PowerShell에서 프로젝트 폴더로 이동한 후 Codex를 실행하였다.
 
-```text
-cd 프로젝트폴더
+Codex에서 `/mcp` 명령을 입력하여 Unreal Engine과 연결되는지 확인하였다.
 
-codex
-```
-
-Codex 실행 후 /mcp 명령을 이용하여 MCP Tool을 확인하였다.
-
-처음에는 Tool 호출이 실패하였다.
-
-```
-HTTP request failed
-
-Connection refused
-
-127.0.0.1:8000
-```
-
-오류가 발생하였다.
+처음에는 연결되지 않아 오류가 발생하였다.
 
 ---
 
-# 7. 오류 해결
+# 6. 오류 해결
 
-HTTP Error가 발생한 원인은 Unreal Engine에서 MCP Server가 실행되지 않았기 때문이었다.
+처음에는 Codex와 Unreal Engine이 연결되지 않아 오류가 발생하였다.
 
-Console에서
+원인을 확인해 보니 MCP Server가 실행되지 않은 상태였다.
 
-```text
-ModelContextProtocol.StartServer 8000
-```
+MCP Server를 다시 실행한 후 연결을 다시 시도하였고, 정상적으로 연결되는 것을 확인하였다.
 
-명령을 다시 실행한 후 Codex에서 MCP를 다시 확인하였다.
-
-정상적으로 연결되었다.
+이 과정을 통해 MCP Server가 실행되어 있어야 AI와 Unreal Engine이 통신할 수 있다는 것을 알게 되었다.
 
 ---
 
-# 8. MCP Tool 확인
+# 7. MCP 연결 확인
 
-Codex에서
+MCP가 정상적으로 연결된 후 `/mcp` 명령을 실행하여 연결 상태를 확인하였다.
 
-```text
-/mcp
-```
+또한 Unreal MCP에서 사용할 수 있는 기능들도 확인하였다.
 
-명령을 이용하여 연결 상태를 확인하였다.
-
-다음과 같이 Unreal MCP가 정상적으로 인식되는 것을 확인하였다.
-
-```
-unreal-mcp
-
-call_tool
-
-list_toolsets
-
-describe_toolset
-```
-
-이를 통해 Unreal Engine과 Codex가 성공적으로 연결되었음을 확인하였다.
+이를 통해 Codex와 Unreal Engine이 정상적으로 연결되었음을 확인하였다.
 
 ---
 
-# 9. Toolset 확인
+# 8. Tool 확인
 
-다음으로 Toolset을 조회하였다.
+MCP에는 여러 기능을 사용할 수 있는 Tool이 있었다.
 
-```
-list_toolsets
-```
+이번 실습에서는 Tool 목록을 확인하면서 어떤 기능을 사용할 수 있는지 살펴보았다.
 
-명령을 이용하여 Unreal Engine에서 제공하는 Toolset 목록을 확인하였다.
-
-이를 통해 AI가 Unreal Engine 내부 기능을 사용할 수 있음을 확인하였다.
+앞으로 이러한 Tool을 이용하여 Actor 생성, 프로젝트 확인 등 다양한 작업을 수행할 수 있다는 것을 알게 되었다.
 
 ---
 
-# 10. 권한 승인
+# 9. 권한 설정
 
-Codex가 Unreal MCP Tool을 실행할 때 다음과 같은 권한 요청 창이 나타났다.
+Codex가 Unreal Engine에서 작업을 수행하려고 할 때 권한을 허용하는 창이 나타났다.
 
-```
-Allow
-
-Allow for this session
-
-Always allow
-```
-
-실습에서는 **Allow for this session**을 선택하여 동일한 작업을 반복 수행할 때마다 권한을 다시 요청하지 않도록 설정하였다.
+실습에서는 **Allow for this session**을 선택하여 같은 작업을 반복할 때마다 다시 허용하지 않아도 되도록 설정하였다.
 
 ---
 
-# 11. 연결 확인
+# 10. 실습 결과
 
-MCP 연결 이후 AI가 Unreal Engine과 정상적으로 통신하는 것을 확인하였다.
+이번 실습에서는 Unreal Engine 5.8과 Codex를 MCP를 이용하여 성공적으로 연결하였다.
 
-현재 Level을 조회하고 Actor 정보를 확인하는 기능이 정상적으로 수행되었다.
+또한 MCP가 정상적으로 동작하는 것을 확인하고, 사용할 수 있는 Tool도 확인하였다.
 
-이를 통해 MCP 환경 구축이 성공적으로 완료되었음을 확인하였다.
-
----
-
-# 12. 실습 결과
-
-이번 실습을 통해 Unreal Engine 5.8과 Codex를 MCP를 이용하여 성공적으로 연결하였다.
-
-또한 Toolset 조회와 Actor 정보 확인을 수행하면서 AI가 Unreal Engine과 직접 상호작용할 수 있는 환경을 구축하였다.
-
-이후 Agent Team을 구성하여 실제 Level 제작 실습을 진행할 수 있는 기반을 마련하였다.
+이를 통해 AI와 Unreal Engine을 함께 사용할 수 있는 개발 환경을 구축할 수 있었다.
 
 ---
 
-# 13. 느낀 점
+# 11. 느낀 점
 
-처음에는 MCP 연결 과정에서 여러 오류가 발생하였다.
+이번 실습에서는 MCP를 연결하는 과정에서 여러 오류가 발생하였다.
 
-특히 HTTP Connection Error와 MCP Server 실행 문제로 인해 연결에 어려움을 겪었다.
+처음에는 연결되지 않아 어려움을 겪었지만, 하나씩 원인을 찾아 해결하면서 MCP가 어떻게 동작하는지 조금씩 이해할 수 있었다.
 
-하지만 원인을 하나씩 분석하며 해결하는 과정을 통해 MCP의 동작 원리를 이해할 수 있었다.
-
-이번 실습을 통해 AI와 Unreal Engine을 직접 연결하는 환경을 구축할 수 있었으며, 이후 Agent Team 기반 개발 실습을 진행할 준비를 마칠 수 있었다.
+직접 Codex와 Unreal Engine을 연결해 보니 AI를 이용하여 언리얼 엔진 작업을 도와줄 수 있다는 점이 신기했고, 앞으로 더 다양한 기능도 사용해 보고 싶다는 생각이 들었다.
