@@ -2,54 +2,53 @@
 
 ## 프로젝트 소개
 
-이번 과제를 통해 Unreal Engine 5.8에서 사용할 수 있는 MCP(Model Context Protocol)를 설치하고, AI와 함께 언리얼 엔진을 사용하는 방법을 공부하였습니다.
+이번 저장소는 Unreal Engine 5.8을 공부하면서 실습한 내용을 정리하기 위해 만들었습니다.
 
-또한 Codex를 Unreal Engine과 연결하여 AI가 언리얼 엔진 작업을 도와줄 수 있는 환경을 직접 구축해 보았습니다.
+Unreal Engine과 Codex를 MCP(Model Context Protocol)로 연결하여 AI와 함께 언리얼 엔진을 사용하는 방법을 실습하였습니다.
+
+또한 AI Agent Team을 구성하여 역할을 나누어 작업하는 방식도 함께 공부하였습니다.
 
 ---
 
-## 개발 환경
+# 학습 목표
+
+이번 실습에서는 다음 내용을 목표로 공부하였습니다.
+
+- Unreal Engine 5.8 설치
+- MCP 환경 구축
+- Codex와 Unreal Engine 연결
+- AI Agent Team 구성
+- GitHub를 이용한 실습 내용 정리
+
+또한 단순히 기능을 사용하는 것이 아니라, 언리얼 엔진에서 그래픽 요소들이 어떤 순서로 연결되어 화면이 만들어지는지 이해하는 것을 목표로 하였습니다.
+
+---
+
+# 개발 환경
 
 | 항목 | 내용 |
 |------|------|
 | Unreal Engine | 5.8 |
 | AI | OpenAI Codex (GPT-5.5) |
-| 운영체제 | Windows 11 |
-| 개발 환경 | Unreal Editor, Codex |
+| 운영체제 | Windows |
+| IDE | Unreal Editor + Codex |
 
 ---
 
-## 공부한 내용
+# 공부한 내용
 
-이번 실습을 진행하면서 다음 내용을 학습하였습니다.
+이번 실습에서는 다음 내용을 학습하였습니다.
 
 - Unreal Engine 5.8 설치
-- MCP 환경 설정
-- Codex와 Unreal Engine 연결
-- AI에게 명령을 내려 작업하는 방법
-- 여러 AI 역할(Agent Team)에 대해 알아보기
-- GitHub 저장소 생성 및 관리
+- MCP 연결
+- Codex 연결
+- Agent Team 구성
+- GitHub 저장소 생성
+- Markdown 문서 작성
 
 ---
 
-## Agent Team이란?
-
-Agent Team은 하나의 AI가 모든 일을 하는 것이 아니라 여러 AI가 각각 역할을 나누어 작업하는 방식입니다.
-
-예를 들어
-
-- 프로젝트를 관리하는 AI
-- 자료를 찾는 AI
-- 맵을 만드는 AI
-- 오류를 확인하는 AI
-
-처럼 역할을 나누어 하나의 프로젝트를 함께 진행할 수 있다는 것을 공부하였습니다.
-
-이번 실습에서는 Agent Team의 개념을 이해하고 관련 환경을 구축해 보았습니다.
-
----
-
-## 프로젝트 구조
+# 프로젝트 구성
 
 ```
 unreal-engine-study
@@ -58,14 +57,32 @@ unreal-engine-study
 ├── AGENTS.md
 │
 └── Docs
-    ├── Day1_MCP_Study.md
-    └── Day1_Practice.md
+    ├── 01_MCP_Study.md
+    ├── 02_MCP_Setup.md
+    ├── 03_AI_Agent_Team.md
+    └── 04_Troubleshooting.md
 ```
 
 ---
 
-## 느낀 점
+# 앞으로의 계획
 
-처음에는 MCP와 Agent Team이라는 개념이 어려웠지만, Codex를 Unreal Engine과 직접 연결해 보면서 AI를 활용한 개발 환경이 어떻게 구성되는지 이해할 수 있었습니다.
+이번에는 Unreal Engine과 AI를 연결하는 환경을 구축하는 것에 중점을 두었습니다.
 
-앞으로 Unreal Engine을 공부하면서 AI를 함께 활용하면 개발에 많은 도움이 될 것이라고 생각합니다.
+앞으로는 교수님께서 말씀해 주신 것처럼 그래픽스 파이프라인을 이해하는 것을 목표로 하여 다음 내용을 계속 공부할 예정입니다.
+
+- Material
+- Lighting
+- Camera
+- Animation
+- Water System
+
+또한 AI Agent를 활용하여 Unreal Engine 프로젝트를 더욱 효율적으로 관리하는 방법도 함께 공부할 계획입니다.
+
+---
+
+# 느낀 점
+
+이번 실습에서는 설치부터 환경 설정까지 예상보다 시간이 많이 걸렸지만, 직접 문제를 해결하면서 언리얼 엔진의 기본적인 사용 방법을 익힐 수 있었습니다.
+
+아직은 모르는 부분이 많지만, 앞으로 다양한 실습을 진행하면서 Unreal Engine과 그래픽스에 대해 더 깊이 공부하고 싶습니다.
