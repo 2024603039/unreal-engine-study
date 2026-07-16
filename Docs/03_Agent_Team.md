@@ -1,168 +1,108 @@
 # 03. AI Agent Team
 
-**작성일 : 2026-07-11**
+작성일 : 2026-07-11
 
 ---
 
-# 1. 실습 목적
+## 1. 실습 목표
 
-이번 실습에서는 Unreal Engine 5.8의 MCP를 이용하여 AI Agent Team이 어떻게 구성되는지 공부하였다.
+이번 실습에서는 Unreal Engine 5.8에서 AI Agent Team이 어떤 방식으로 동작하는지 알아보고, 각 Agent의 역할을 이해하는 것을 목표로 하였다.
 
-또한 하나의 AI가 모든 작업을 수행하는 것이 아니라 여러 AI가 각각 역할을 나누어 프로젝트를 진행하는 방식을 이해하는 것을 목표로 하였다.
-
----
-
-# 2. Agent Team이란?
-
-Agent Team은 여러 AI가 각각 역할을 맡아 하나의 프로젝트를 함께 진행하는 방식이다.
-
-예를 들어 자료를 조사하는 AI, 레벨을 만드는 AI, 결과를 확인하는 AI처럼 역할을 나누어 작업할 수 있다.
-
-이번 실습에서는 Agent Team의 기본적인 구조를 이해하는 데 중점을 두었다.
+처음에는 Agent가 여러 개라는 것이 조금 생소했지만, 역할을 나누어 작업을 수행한다는 점을 배우는 것이 이번 실습의 목표였다.
 
 ---
 
-# 3. Agent Team 구성
+## 2. AI Agent Team이란?
 
-이번 실습에서는 다음과 같은 구조로 Agent Team을 구성하였다.
+AI Agent Team은 여러 AI가 각각 다른 역할을 맡아 하나의 프로젝트를 함께 진행하는 방식이다.
 
-```
-                    Project Manager
-                           │
- ┌────────────┬────────────┼────────────┬────────────┐
- │            │            │            │            │
-Research   Level      Lighting     QA      Documentation
- Agent     Designer     Agent      Agent      Agent
-```
-
-Project Manager가 전체 작업을 관리하고, 각 Agent는 자신의 역할에 맞는 작업을 수행하는 방식이다.
+기존에는 AI 하나에게 모든 질문을 했지만, Agent Team은 역할을 나누어 더 효율적으로 작업할 수 있다는 점이 차이였다.
 
 ---
 
-# 4. Project Manager
+## 3. Agent Team 구성
 
-Project Manager는 프로젝트 전체를 관리하는 역할이다.
+이번 실습에서는 다음과 같은 Agent를 확인하였다.
 
-주요 역할은 다음과 같다.
+- Project Manager
+- Research Agent
+- Level Designer Agent
+- Technical Artist Agent
+- QA Agent
+- Documentation Agent
 
-- 프로젝트 목표 설정
-- 작업 계획 관리
-- 각 Agent에게 역할 분배
-- 작업 진행 상황 확인
-- 최종 결과 확인
-
----
-
-# 5. Research Agent
-
-Research Agent는 필요한 자료를 조사하는 역할이다.
-
-이번 실습에서는
-
-- Unreal Engine 5.8 조사
-- MCP 기능 조사
-- Tool 사용 방법 조사
-
-등을 진행하였다.
+각 Agent는 맡은 역할에 따라 다른 작업을 수행하도록 구성되어 있었다.
 
 ---
 
-# 6. Level Designer Agent
+## 4. Project Manager
 
-Level Designer Agent는 언리얼 엔진에서 레벨을 구성하는 역할이다.
+Project Manager는 전체 프로젝트를 관리하는 역할을 한다.
 
-이번 실습에서는
-
-- 레벨 확인
-- Actor 생성
-- Actor 위치 수정
-- 레벨 저장
-
-등의 작업을 수행하였다.
-
-생성한 Actor가 화면에 보이지 않는 문제도 있었지만 Outliner와 Focus(F) 기능을 이용하여 위치를 확인할 수 있었다.
+각 Agent에게 작업을 나누어 주고 전체 진행 상황을 확인하는 역할이라는 것을 알게 되었다.
 
 ---
 
-# 7. Lighting Agent
+## 5. Research Agent
 
-Lighting Agent는 조명과 화면 분위기를 담당하는 역할이다.
+Research Agent는 필요한 자료를 조사하는 역할을 한다.
 
-이번 실습에서는 직접 조명을 수정하지는 않았지만 앞으로 다음 내용을 공부할 예정이다.
-
-- Directional Light
-- Sky Light
-- Environment Light
-- Post Process
-
-교수님께서 말씀해 주신 것처럼 앞으로는 그래픽스가 어떻게 연결되는지 이해하는 데 집중하면서 조명도 함께 공부할 계획이다.
+이번 실습에서는 MCP와 언리얼 엔진에 대한 내용을 조사하는 역할로 활용했다.
 
 ---
 
-# 8. QA Agent
+## 6. Level Designer Agent
 
-QA Agent는 작업 결과를 확인하는 역할이다.
+Level Designer Agent는 언리얼 엔진 안에서 Level을 구성하는 역할을 한다.
 
-이번 실습에서는
+Actor를 배치하거나 위치를 수정하는 작업을 담당한다는 것을 알게 되었다.
 
-- Actor가 정상적으로 생성되었는지
-- 위치가 올바른지
-- 레벨이 정상적으로 저장되었는지
-
-등을 확인하였다.
+첫 과제였던 산 배치에서 가장 유용하게 썼다.
 
 ---
 
-# 9. Documentation Agent
+## 7. Technical Artist Agent
 
-Documentation Agent는 실습 내용을 문서로 정리하는 역할이다.
+Technical Artist Agent는 Material이나 Lighting처럼 화면을 더 보기 좋게 만드는 작업을 담당한다.
 
-이번 실습에서는
+이번 실습에서는 실제로 사용하지는 않았지만 앞으로 많이 사용하게 될 Agent라는 것을 알게 되었다.
 
-- README.md
-- AGENTS.md
-- MCP Study
-- MCP Setup
-- AI Agent Team
-- Troubleshooting
-
-문서를 작성하였다.
-
-교수님께서 말씀해 주신 것처럼 AI가 작성한 내용을 그대로 사용하는 것이 아니라 직접 읽어보고 수정하면서 문서를 작성하였다.
+더 퀄리티를 높일 때가 오면 유용할 것 같다.
 
 ---
 
-# 10. 이번 실습에서 배운 점
+## 8. QA Agent
 
-이번 실습에서는 AI Agent Team의 기본적인 구조를 이해할 수 있었다.
+QA Agent는 작업이 제대로 되었는지 확인하는 역할을 한다.
 
-또한 역할을 나누어 작업하면 프로젝트를 더 체계적으로 관리할 수 있다는 점도 알게 되었다.
-
-아직은 기본적인 Agent만 사용하였지만 앞으로 언리얼 엔진을 더 공부하면서 필요한 Agent를 추가하여 활용해 보고 싶다.
+Actor가 정상적으로 생성되었는지, 위치가 맞는지 등을 확인하는 역할이라는 것을 이해하였다.
 
 ---
 
-# 11. 앞으로의 계획
+## 9. Documentation Agent
 
-이번에는 기본적인 Agent Team만 구성하였다.
+Documentation Agent는 실습 내용을 Markdown으로 정리하는 역할을 한다.
 
-앞으로는 교수님께서 말씀해 주신 것처럼
+교수님께 제출하는 보고서나 GitHub 문서를 작성할 때 사용하는 Agent로 이용한다.
 
-- Camera Agent
-- Material Agent
-- Animation Agent
-- Physics Agent
-
-등 역할을 더욱 세분화하여 프로젝트를 진행해 보고자 한다.
-
-또한 Easy Waterscape와 같은 실습에서도 AI를 활용하면서 그래픽스 파이프라인을 이해하는 데 집중할 계획이다.
+막상 시켜보니 퀄리티 있는 보고서가 나오긴했지만 너무 딱딱하고 내 실제 의견과 다른 부분들이 있어서 적절히 잘 활용하는 방법을 더 찾아보고 싶다.
 
 ---
 
-# 12. 느낀 점
+## 10. 이번 실습에서 배운 점
 
-처음에는 Agent Team이라는 개념이 조금 어렵게 느껴졌지만 역할을 하나씩 나누어 생각해 보니 이해하기 쉬웠다.
+이번 실습을 통해 AI도 하나가 아니라 여러 역할로 나누어 사용할 수 있다는 것을 알게 되었다.
 
-특히 하나의 AI가 모든 작업을 수행하는 것이 아니라 필요한 역할을 나누어 사용할 수 있다는 점이 인상적이었다.
+아직 모든 Agent를 직접 사용해 보지는 못했지만, 역할을 나누면 프로젝트를 더 체계적으로 진행할 수 있다는 점을 이해하였다.
 
-이번 실습을 통해 AI를 언리얼 엔진과 함께 활용하는 방법을 배울 수 있었고, 앞으로 그래픽스와 언리얼 엔진을 공부하면서 더 다양한 Agent를 활용해 보고 싶다.
+---
+
+
+
+## 13. 느낀 점
+
+이번 실습에서는 AI Agent Team이라는 새로운 개념을 처음 접하였다.
+
+아직은 익숙하지 않지만 앞으로 언리얼 엔진 실습을 진행하면서 각 Agent를 직접 사용해 보면 더 쉽게 이해할 수 있을 것 같다.
+
+특히 하나의 AI가 모든 작업을 하는 것이 아니라 역할을 나누어 협업한다는 점이 가장 신기했다.
